@@ -3,7 +3,7 @@
     <parent>
         <artifactId>custom-boot-parent</artifactId>
         <groupId>com.igitras</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <relativePath>../custom-boot-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
