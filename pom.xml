@@ -53,6 +53,11 @@
         </developer>
     </developers>
 
+    <organization>
+        <name>igitras.com</name>
+        <url>https://www.igitras.com</url>
+    </organization>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
