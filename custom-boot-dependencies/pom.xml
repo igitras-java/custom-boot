@@ -190,17 +190,17 @@
             <dependency>
                 <groupId>com.baidu.oped.sia.boot</groupId>
                 <artifactId>custom-boot-starters</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baidu.oped.sia.boot</groupId>
                 <artifactId>custom-boot-core</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baidu.oped.sia.boot</groupId>
                 <artifactId>custom-boot-autoconfigure</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
