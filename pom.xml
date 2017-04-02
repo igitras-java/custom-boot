@@ -9,6 +9,15 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>custom-boot-core</module>
+        <module>custom-boot-dependencies</module>
+        <module>custom-boot-parent</module>
+        <module>custom-boot-starters</module>
+        <module>custom-boot-autoconfigure</module>
+        <module>custom-boot-examples</module>
+    </modules>
+
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Spring-boot extension project of igitras.com</description>
     <url>https://github.com/igitras-java/custom-boot</url>
