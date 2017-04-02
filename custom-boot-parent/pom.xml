@@ -6,7 +6,7 @@
         <groupId>com.igitras</groupId>
         <artifactId>custom-boot-dependencies</artifactId>
         <relativePath>../custom-boot-dependencies</relativePath>
-        <version>1.1</version>
+        <version>1.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>custom-boot-parent</artifactId>

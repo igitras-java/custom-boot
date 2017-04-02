@@ -4,7 +4,7 @@
 
     <groupId>com.igitras</groupId>
     <artifactId>custom-boot</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -31,7 +31,7 @@
         <connection>${scm.url}</connection>
         <developerConnection>${scm.url}</developerConnection>
         <url>${scm.url}</url>
-      <tag>v1.1</tag>
+      <tag>custom-boot-1.0</tag>
   </scm>
 
     <issueManagement>
