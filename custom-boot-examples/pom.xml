@@ -7,8 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.igitras</groupId>
     <artifactId>custom-boot-examples</artifactId>
-
+    <name>${project.groupId}:${project.artifactId}</name>
 
 </project>
