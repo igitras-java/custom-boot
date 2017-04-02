@@ -30,6 +30,13 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>${scm.url}</connection>
+        <developerConnection>${scm.url}</developerConnection>
+        <url>${scm.url}</url>
+    </scm>
+
+
     <organization>
         <name>igitras.com</name>
         <url>https://www.igitras.com</url>
@@ -42,6 +49,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <scm.url>scm:git:https://github.com/igitras-java/custom-boot.git</scm.url>
 
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <spring-cloud.version>Camden.SR6</spring-cloud.version>
