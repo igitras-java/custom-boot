@@ -1,6 +1,5 @@
 package com.igitras.cbframework.common.response.normalize;
 
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.MessageSourceResolvable;
@@ -21,11 +20,13 @@ public class LocalizableResolver implements MessageSourceAware {
 
     private MessageSource messageSource;
 
-    @Override
-    public void setMessageSource(MessageSource messageSource) {
-        this.messageSource = messageSource;
-    }
-
+    /**
+     * Resolve message with message source resolvable and locale.
+     *
+     * @param resolvable resolvable
+     * @param locale     locale
+     * @return resolved result
+     */
     public String resolveMessage(MessageSourceResolvable resolvable, Locale locale) {
         Assert.notNull(resolvable, "MessageSourceResolvable must not be null.");
         Assert.notNull(locale, "Locale must not be null.");
@@ -37,9 +38,13 @@ public class LocalizableResolver implements MessageSourceAware {
         }
     }
 
+    @Override
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
     private Object[] normalizeArgs(Object... args) {
         final Locale locale = LocaleContextHolder.getLocale();
-
         return Stream.of(args)
                 .map(arg -> {
                     if (arg instanceof String) {
@@ -54,5 +59,4 @@ public class LocalizableResolver implements MessageSourceAware {
                 .collect(Collectors.toList())
                 .toArray(new Object[args.length]);
     }
-
 }

@@ -3,6 +3,7 @@ package com.igitras.cbframework.descriptor;
 import com.igitras.cbframework.CodeHolder;
 import com.igitras.cbframework.ErrorDescriptor;
 import com.igitras.cbframework.ErrorDescriptorFactory;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
@@ -28,8 +29,6 @@ public abstract class AbstractErrorDescriptorFactory implements ErrorDescriptorF
         loadDescriptors();
     }
 
-    public abstract void loadDescriptors();
-
     @Override
     public ErrorDescriptor getDescriptor(String... codes) {
         Assert.notNull(codes, "Code should not be null");
@@ -53,4 +52,6 @@ public abstract class AbstractErrorDescriptorFactory implements ErrorDescriptorF
         }
         return getDescriptor(codes.toArray(new String[codes.size()]));
     }
+
+    public abstract void loadDescriptors();
 }

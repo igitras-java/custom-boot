@@ -1,10 +1,10 @@
 package com.igitras.cbframework.exception.request;
 
-
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.ErrorMessage;
+
 import org.springframework.http.HttpStatus;
 
 /**

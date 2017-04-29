@@ -8,6 +8,7 @@ import com.igitras.cbframework.common.response.ErrorResp;
 import com.igitras.cbframework.common.response.normalize.LocalizableResolver;
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.ErrorMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.util.Assert;
@@ -35,7 +36,6 @@ public class ErrorRespFactory extends LocalizableResolver implements NormalizedF
     protected ErrorResp create(CustomBootException exception) {
         // The Error Descriptor from config
         ErrorDescriptor descriptor = descriptorFactory.getDescriptor(exception);
-
         return buildError(exception, descriptor);
     }
 
@@ -43,43 +43,37 @@ public class ErrorRespFactory extends LocalizableResolver implements NormalizedF
         return new DefaultErrorResp();
     }
 
-    private ErrorResp handle(ErrorMessage error) {
-        if (error instanceof CustomBootException) {
-            return create((CustomBootException) error);
-        }
-
-        // The Error Descriptor from config
-        ErrorDescriptor descriptor = descriptorFactory.getDescriptor(error.getCodes());
-
-        return buildError(error, descriptor);
-    }
-
     private ErrorResp buildError(ErrorMessage errorMessage, ErrorDescriptor descriptor) {
         DefaultErrorResp defaultError = errorInstance();
-
         final Locale locale = LocaleContextHolder.getLocale();
-
         if (descriptor != null) {
-            defaultError.setCode(descriptor.getCode()).setLink(descriptor.getLink());
+            defaultError.setCode(descriptor.getCode())
+                    .setLink(descriptor.getLink());
         } else {
             String code = "No code";
             String[] codes = errorMessage.getCodes();
             if (codes != null && codes.length >= 1) {
                 code = codes[0];
             }
-            defaultError.setCode(code).setLink("No link");
+            defaultError.setCode(code)
+                    .setLink("No link");
         }
-
         String message = resolveMessage(errorMessage, locale);
         defaultError.setMessage(message);
-
         if (!CollectionUtils.isEmpty(errorMessage.getDetails())) {
             defaultError.setErrors(errorMessage.getDetails()
                     .stream()
                     .map(this::handle)
                     .collect(Collectors.toList()));
         }
-
         return defaultError;
+    }
+
+    private ErrorResp handle(ErrorMessage error) {
+        if (error instanceof CustomBootException) {
+            return create((CustomBootException) error);
+        }        // The Error Descriptor from config
+        ErrorDescriptor descriptor = descriptorFactory.getDescriptor(error.getCodes());
+        return buildError(error, descriptor);
     }
 }

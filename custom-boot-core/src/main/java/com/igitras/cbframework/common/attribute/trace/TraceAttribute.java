@@ -10,6 +10,21 @@ import com.igitras.cbframework.common.attribute.RequestAttribute;
 public interface TraceAttribute extends RequestAttribute {
 
     /**
+     * Get the trace consumer, usually is the client.
+     *
+     * @return consumer node
+     */
+    TraceNode getConsumer();
+
+    /**
+     * Set the trace consumer, usually is the client.
+     *
+     * @param consumer consumer node
+     * @return trace attribute
+     */
+    TraceAttribute setConsumer(TraceNode consumer);
+
+    /**
      * Get the trace attribute id.
      *
      * @return trace id
@@ -23,6 +38,21 @@ public interface TraceAttribute extends RequestAttribute {
      * @return trace attribute
      */
     TraceAttribute setId(String id);
+
+    /**
+     * Get the trace provider, usually is the server.
+     *
+     * @return provider node
+     */
+    TraceNode getProvider();
+
+    /**
+     * Set the trace provider, usually is the server.
+     *
+     * @param provider provider node
+     * @return trace attribute
+     */
+    TraceAttribute setProvider(TraceNode provider);
 
     /**
      * Get the trace span number.
@@ -47,41 +77,10 @@ public interface TraceAttribute extends RequestAttribute {
     Long getTimestamp();
 
     /**
-     * Set the trace start timestamp
+     * Set the trace start timestamp.
      *
      * @param timestamp trace start time
      * @return trace attribute
      */
     TraceAttribute setTimestamp(Long timestamp);
-
-    /**
-     * Get the trace provider, usually is the server.
-     *
-     * @return provider node
-     */
-    TraceNode getProvider();
-
-    /**
-     * Set the trace provider, usually is the server
-     *
-     * @param provider provider node
-     * @return trace attribute
-     */
-    TraceAttribute setProvider(TraceNode provider);
-
-    /**
-     * Get the trace consumer, usually is the client.
-     *
-     * @return consumer node
-     */
-    TraceNode getConsumer();
-
-    /**
-     * Set the trace consumer, usually is the client
-     *
-     * @param consumer consumer node
-     * @return trace attribute
-     */
-    TraceAttribute setConsumer(TraceNode consumer);
-
 }

@@ -1,10 +1,12 @@
 package com.igitras.cbframework.exception.access.auth;
 
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
+
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 import com.igitras.cbframework.exception.ErrorMessage;
 import com.igitras.cbframework.exception.access.AccessDeniedException;
+
 import org.springframework.http.HttpStatus;
 
 /**
@@ -20,6 +22,11 @@ public class AuthenticationFailedException extends AccessDeniedException {
         this("Authentication Failed.");
     }
 
+    /**
+     * Create an {@link AuthenticationFailedException} with message.
+     *
+     * @param message message
+     */
     public AuthenticationFailedException(String message) {
         // @formatter:off
         this(message, builder().addArguments(message).build());

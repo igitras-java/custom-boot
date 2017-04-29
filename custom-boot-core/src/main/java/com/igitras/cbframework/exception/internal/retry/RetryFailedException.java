@@ -1,6 +1,5 @@
 package com.igitras.cbframework.exception.internal.retry;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import static java.lang.String.format;

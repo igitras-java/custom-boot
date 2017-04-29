@@ -1,9 +1,9 @@
 package com.igitras.cbframework.exception.access;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import com.igitras.cbframework.exception.ErrorMessage;
+
 import org.springframework.http.HttpStatus;
 
 /**
@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
  * @author mason
  */
 public class IpForbiddenException extends AccessDeniedException {
+
     private static final long serialVersionUID = -4039173989983607900L;
 
     public IpForbiddenException() {

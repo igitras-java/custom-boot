@@ -1,7 +1,7 @@
 package com.igitras.cbframework.common.attribute.trace;
 
-
 import com.igitras.cbframework.common.attribute.RequestAttributeReader;
+
 import org.springframework.util.Assert;
 
 import java.util.Calendar;
@@ -28,5 +28,4 @@ public abstract class TraceAttributeReader<T extends TraceAttribute> implements 
         // @formatter:on
         return attribute;
     }
-
 }

@@ -15,6 +15,16 @@ public abstract class CustomBootRequestAttributesHolder {
             new NamedInheritableThreadLocal<>("Custom boot Request context");
 
     /**
+     * Return the CustomBootRequestAttributes currently bound to the thread. Exposes the previously bound
+     * CustomBootRequestAttributes instance, if any.
+     *
+     * @return the CustomBootRequestAttributes currently bound to the thread
+     */
+    public static CustomBootRequestAttributes currentRequestContext() {
+        return requestContext.get();
+    }
+
+    /**
      * Reset the RequestAttributes for the current thread.
      */
     public static void resetRequestContext() {
@@ -34,15 +44,4 @@ public abstract class CustomBootRequestAttributesHolder {
             requestContext.set(attributes);
         }
     }
-
-    /**
-     * Return the CustomBootRequestAttributes currently bound to the thread.
-     * <p>Exposes the previously bound CustomBootRequestAttributes instance, if any.
-     *
-     * @return the CustomBootRequestAttributes currently bound to the thread
-     */
-    public static CustomBootRequestAttributes currentRequestContext() {
-        return requestContext.get();
-    }
-
 }

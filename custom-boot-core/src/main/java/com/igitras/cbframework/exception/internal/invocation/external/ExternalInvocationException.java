@@ -1,13 +1,11 @@
 package com.igitras.cbframework.exception.internal.invocation.external;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import static java.lang.String.format;
 
 import com.igitras.cbframework.exception.ErrorMessage;
 import com.igitras.cbframework.exception.internal.invocation.InvocationException;
-
 
 /**
  * External Service Invocation Exception.

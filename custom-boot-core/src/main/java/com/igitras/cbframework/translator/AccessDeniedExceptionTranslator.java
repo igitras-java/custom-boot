@@ -3,6 +3,7 @@ package com.igitras.cbframework.translator;
 import com.igitras.cbframework.CustomBootExceptionTranslator;
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.access.AuthorizationFailedException;
+
 import org.springframework.security.access.AccessDeniedException;
 
 /**
@@ -13,18 +14,19 @@ import org.springframework.security.access.AccessDeniedException;
  */
 public class AccessDeniedExceptionTranslator
         implements CustomBootExceptionTranslator<AccessDeniedException, CustomBootException> {
+
     @Override
     public int getOrder() {
         return 0;
     }
 
     @Override
-    public CustomBootException translate(AccessDeniedException exception) {
-        return new AuthorizationFailedException(exception.getMessage());
+    public boolean support(Exception exception) {
+        return exception instanceof AccessDeniedException;
     }
 
     @Override
-    public boolean support(Exception exception) {
-        return exception instanceof AccessDeniedException;
+    public CustomBootException translate(AccessDeniedException exception) {
+        return new AuthorizationFailedException(exception.getMessage());
     }
 }

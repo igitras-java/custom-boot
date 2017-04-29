@@ -1,9 +1,9 @@
 package com.igitras.cbframework.common.response.normalize;
 
-
 import com.igitras.cbframework.common.NormalizedFactory;
 import com.igitras.cbframework.common.Normalizer;
 import com.igitras.cbframework.common.response.NormalizedResp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -26,7 +26,6 @@ import java.util.List;
 public class ResponseNormalizer<N extends NormalizedResp> implements ResponseBodyAdvice<Object> {
 
     private final List<Normalizer<N>> normalizers;
-
     @Autowired
     private NormalizedFactory<N> factory;
 
@@ -45,14 +44,12 @@ public class ResponseNormalizer<N extends NormalizedResp> implements ResponseBod
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
             Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
             ServerHttpResponse response) {
-
         N result = factory.create(body);
         for (Normalizer<N> normalizer : normalizers) {
             if (normalizer.support(result)) {
                 normalizer.normalize(result);
             }
         }
-
         return result;
     }
 }

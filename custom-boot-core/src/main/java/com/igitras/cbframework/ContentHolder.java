@@ -7,5 +7,10 @@ package com.igitras.cbframework;
  */
 public interface ContentHolder<T> {
 
+    /**
+     * Get the content data.
+     *
+     * @return content
+     */
     T getData();
 }

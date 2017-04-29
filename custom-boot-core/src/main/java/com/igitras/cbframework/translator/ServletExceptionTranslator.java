@@ -1,6 +1,5 @@
 package com.igitras.cbframework.translator;
 
-
 import static org.springframework.util.StringUtils.arrayToCommaDelimitedString;
 import static org.springframework.util.StringUtils.collectionToCommaDelimitedString;
 
@@ -8,6 +7,7 @@ import com.igitras.cbframework.CustomBootExceptionTranslator;
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.ResolvableArgument;
 import com.igitras.cbframework.exception.request.BadRequestException;
+
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -27,9 +27,15 @@ import javax.servlet.ServletException;
  */
 public class ServletExceptionTranslator
         implements CustomBootExceptionTranslator<ServletException, CustomBootException> {
+
     @Override
     public int getOrder() {
         return 0;
+    }
+
+    @Override
+    public boolean support(Exception exception) {
+        return exception instanceof ServletException;
     }
 
     @Override
@@ -54,13 +60,7 @@ public class ServletExceptionTranslator
         } else if (exception instanceof MissingServletRequestPartException) {
             return handle((MissingServletRequestPartException) exception);
         }
-
         return handle(exception);
-    }
-
-    @Override
-    public boolean support(Exception exception) {
-        return exception instanceof ServletException;
     }
 
     private CustomBootException handle(ServletException exception) {

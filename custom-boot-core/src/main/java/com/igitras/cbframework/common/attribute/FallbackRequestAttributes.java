@@ -14,8 +14,8 @@ public class FallbackRequestAttributes implements CustomBootRequestAttributes {
     }
 
     @Override
-    public <T> void setAttribute(String name, T attribute) {
-
+    public String[] getAttributes() {
+        return new String[0];
     }
 
     @Override
@@ -24,7 +24,6 @@ public class FallbackRequestAttributes implements CustomBootRequestAttributes {
     }
 
     @Override
-    public String[] getAttributes() {
-        return new String[0];
+    public <T> void setAttribute(String name, T attribute) {
     }
 }

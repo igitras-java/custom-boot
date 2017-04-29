@@ -10,16 +10,15 @@ import java.util.List;
  * @author mason
  */
 public class ErrorMessageBuilder implements MessageMaintainer, HierarchyMaintainer<ErrorMessage> {
+
     private final CustomBootExceptionErrorMessage errorMessage;
 
     private ErrorMessageBuilder() {
         this.errorMessage = new CustomBootExceptionErrorMessage();
     }
 
-    @Override
-    public ErrorMessageBuilder addCodes(String... codes) {
-        errorMessage.addCodes(codes);
-        return this;
+    public static ErrorMessageBuilder builder() {
+        return new ErrorMessageBuilder();
     }
 
     @Override
@@ -29,8 +28,8 @@ public class ErrorMessageBuilder implements MessageMaintainer, HierarchyMaintain
     }
 
     @Override
-    public ErrorMessageBuilder addDetails(ErrorMessage... details) {
-        errorMessage.addDetails(details);
+    public ErrorMessageBuilder addCodes(String... codes) {
+        errorMessage.addCodes(codes);
         return this;
     }
 
@@ -40,12 +39,14 @@ public class ErrorMessageBuilder implements MessageMaintainer, HierarchyMaintain
         return this;
     }
 
-    public ErrorMessage build() {
-        return this.errorMessage;
+    @Override
+    public ErrorMessageBuilder addDetails(ErrorMessage... details) {
+        errorMessage.addDetails(details);
+        return this;
     }
 
-    public static ErrorMessageBuilder builder() {
-        return new ErrorMessageBuilder();
+    public ErrorMessage build() {
+        return this.errorMessage;
     }
 
     /**
@@ -72,6 +73,5 @@ public class ErrorMessageBuilder implements MessageMaintainer, HierarchyMaintain
             Collections.addAll(this.details, detail);
             return this;
         }
-
     }
 }

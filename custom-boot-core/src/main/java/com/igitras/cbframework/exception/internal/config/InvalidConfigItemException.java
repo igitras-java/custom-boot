@@ -19,5 +19,4 @@ public final class InvalidConfigItemException extends ConfigurationException {
         super(format("Invalid configuration Item: [%s].", itemName), builder().addArguments(itemName).build());
         // @formatter:on
     }
-
 }

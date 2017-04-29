@@ -19,11 +19,11 @@ public interface ErrorResp extends NormalizedResp {
     String getCode();
 
     /**
-     * The Error Message of the error getCode, include some customized params.
+     * Error details if this error is made up with a series of error.
      *
-     * @return error msg
+     * @return errors
      */
-    String getMessage();
+    List<ErrorResp> getErrors();
 
     /**
      * Error definition url, for user to get some details of the error.
@@ -33,9 +33,9 @@ public interface ErrorResp extends NormalizedResp {
     String getLink();
 
     /**
-     * Error details if this error is made up with a series of error.
+     * The Error Message of the error getCode, include some customized params.
      *
-     * @return errors
+     * @return error msg
      */
-    List<ErrorResp> getErrors();
+    String getMessage();
 }

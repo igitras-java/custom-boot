@@ -1,9 +1,9 @@
 package com.igitras.cbframework.translator;
 
-
 import com.igitras.cbframework.CustomBootExceptionTranslator;
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.request.BadRequestException;
+
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
@@ -15,9 +15,15 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
  */
 public class HttpMessageConversionExceptionTranslator
         implements CustomBootExceptionTranslator<HttpMessageConversionException, CustomBootException> {
+
     @Override
     public int getOrder() {
         return 0;
+    }
+
+    @Override
+    public boolean support(Exception exception) {
+        return exception instanceof HttpMessageConversionException;
     }
 
     @Override
@@ -35,15 +41,12 @@ public class HttpMessageConversionExceptionTranslator
     }
 
     private CustomBootException handle(HttpMessageNotWritableException exception) {
-        return new BadRequestException(exception.getClass().getName());
+        return new BadRequestException(exception.getClass()
+                .getName());
     }
 
     private CustomBootException handle(HttpMessageNotReadableException exception) {
-        return new BadRequestException(exception.getClass().getName());
-    }
-
-    @Override
-    public boolean support(Exception exception) {
-        return exception instanceof HttpMessageConversionException;
+        return new BadRequestException(exception.getClass()
+                .getName());
     }
 }

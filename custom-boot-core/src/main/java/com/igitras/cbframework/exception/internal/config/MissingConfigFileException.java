@@ -4,7 +4,6 @@ import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import static java.lang.String.format;
 
-
 /**
  * Exceptions when the configuration file not found.
  *
@@ -19,6 +18,4 @@ public final class MissingConfigFileException extends ConfigurationException {
         super(format("Missing configuration file: [%s].", fileName), builder().addArguments(fileName).build());
         // @formatter:on
     }
-
-
 }

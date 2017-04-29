@@ -1,6 +1,5 @@
 package com.igitras.cbframework.common.attribute;
 
-
 import com.igitras.cbframework.common.attribute.status.Status;
 import com.igitras.cbframework.common.attribute.status.StatusAttribute;
 import com.igitras.cbframework.common.attribute.trace.TraceAttribute;
@@ -17,6 +16,15 @@ import java.util.UUID;
 public abstract class AttributesFactory {
 
     /**
+     * Build the initial version status attribute.
+     *
+     * @return status attribute
+     */
+    public static StatusAttribute status() {
+        return new Status();
+    }
+
+    /**
      * Build the initial version trace attribute.
      *
      * @return trace attribute
@@ -24,16 +32,8 @@ public abstract class AttributesFactory {
     public static TraceAttribute trace() {
         return new TraceInfo().setId(UUID.randomUUID()
                 .toString())
-                .setTimestamp(Calendar.getInstance().getTimeInMillis())
+                .setTimestamp(Calendar.getInstance()
+                        .getTimeInMillis())
                 .setSpan(-1L);
-    }
-
-    /**
-     * Build the initial version status attribute.
-     *
-     * @return status attribute
-     */
-    public static StatusAttribute status() {
-        return new Status();
     }
 }

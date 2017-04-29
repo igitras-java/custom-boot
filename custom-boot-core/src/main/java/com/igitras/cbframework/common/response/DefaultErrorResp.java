@@ -13,13 +13,11 @@ import javax.validation.constraints.NotNull;
 public class DefaultErrorResp implements ErrorResp {
 
     private static final long serialVersionUID = 4985443972999776854L;
-
     @NotNull
     private String code;
     private String message;
     @NotNull
     private String link;
-
     @JsonDeserialize(contentAs = DefaultErrorResp.class)
     private List<ErrorResp> errors;
 
@@ -34,6 +32,16 @@ public class DefaultErrorResp implements ErrorResp {
     }
 
     @Override
+    public List<ErrorResp> getErrors() {
+        return errors;
+    }
+
+    @Override
+    public String getLink() {
+        return link;
+    }
+
+    @Override
     public String getMessage() {
         return message;
     }
@@ -43,19 +51,9 @@ public class DefaultErrorResp implements ErrorResp {
         return this;
     }
 
-    @Override
-    public String getLink() {
-        return link;
-    }
-
     public DefaultErrorResp setLink(String link) {
         this.link = link;
         return this;
-    }
-
-    @Override
-    public List<ErrorResp> getErrors() {
-        return errors;
     }
 
     public DefaultErrorResp setErrors(List<ErrorResp> errors) {

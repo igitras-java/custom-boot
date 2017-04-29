@@ -1,6 +1,5 @@
 package com.igitras.cbframework.common.attribute.status;
 
-
 import com.igitras.cbframework.common.attribute.RequestAttribute;
 import com.igitras.cbframework.exception.ErrorMessage;
 
@@ -27,21 +26,6 @@ public interface StatusAttribute extends RequestAttribute {
     StatusAttribute setCode(String code);
 
     /**
-     * Get status messages.
-     *
-     * @return message
-     */
-    String[] getMessages();
-
-    /**
-     * Set status messages.
-     *
-     * @param messages messages
-     * @return Status Attribute
-     */
-    StatusAttribute setMessages(String... messages);
-
-    /**
      * Get error messages.
      *
      * @return error messages
@@ -55,4 +39,19 @@ public interface StatusAttribute extends RequestAttribute {
      * @return Statue Attribute
      */
     StatusAttribute setErrorMessages(ErrorMessage... messages);
+
+    /**
+     * Get status messages.
+     *
+     * @return message
+     */
+    String[] getMessages();
+
+    /**
+     * Set status messages.
+     *
+     * @param messages messages
+     * @return Status Attribute
+     */
+    StatusAttribute setMessages(String... messages);
 }

@@ -1,6 +1,5 @@
 package com.igitras.cbframework.exception.internal.retry;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import static java.lang.String.format;
@@ -19,7 +18,8 @@ public final class NeedRetryException extends InternalException {
 
     public NeedRetryException(InvocationException invocationException) {
         super(format("Retry required: %s", invocationException.getMessage()),
-                builder().addArguments(invocationException.getArguments()).addDetails(invocationException).build());
+                builder().addArguments(invocationException.getArguments())
+                        .addDetails(invocationException)
+                        .build());
     }
-
 }

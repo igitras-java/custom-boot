@@ -1,6 +1,5 @@
 package com.igitras.cbframework.exception.internal.invocation.database;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import static java.lang.String.format;
@@ -26,5 +25,4 @@ public class DataServiceException extends InvocationException {
     public DataServiceException(String message, ErrorMessage error) {
         super(message, error);
     }
-
 }

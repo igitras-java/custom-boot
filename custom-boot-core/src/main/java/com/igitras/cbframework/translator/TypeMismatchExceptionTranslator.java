@@ -1,10 +1,10 @@
 package com.igitras.cbframework.translator;
 
-
 import com.igitras.cbframework.CustomBootExceptionTranslator;
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.ResolvableArgument;
 import com.igitras.cbframework.exception.param.value.ParameterValueException;
+
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.web.method.annotation.MethodArgumentConversionNotSupportedException;
@@ -21,6 +21,11 @@ public class TypeMismatchExceptionTranslator
     @Override
     public int getOrder() {
         return 0;
+    }
+
+    @Override
+    public boolean support(Exception exception) {
+        return exception instanceof TypeMismatchException;
     }
 
     @Override
@@ -53,10 +58,5 @@ public class TypeMismatchExceptionTranslator
     private CustomBootException handle(MethodArgumentConversionNotSupportedException exception) {
         return new ParameterValueException(
                 new ResolvableArgument(exception).addArguments(exception.getName(), exception.getRequiredType()));
-    }
-
-    @Override
-    public boolean support(Exception exception) {
-        return exception instanceof TypeMismatchException;
     }
 }

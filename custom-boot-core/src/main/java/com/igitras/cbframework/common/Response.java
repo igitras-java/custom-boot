@@ -8,4 +8,5 @@ import java.io.Serializable;
  * @author mason
  */
 public interface Response extends Serializable {
+
 }

@@ -1,11 +1,11 @@
 package com.igitras.cbframework.adapter;
 
-
 import com.igitras.cbframework.CustomBootExceptionResponseAdapter;
 import com.igitras.cbframework.common.NormalizedFactory;
 import com.igitras.cbframework.common.Normalizer;
 import com.igitras.cbframework.common.response.ErrorResp;
 import com.igitras.cbframework.exception.CustomBootException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -17,8 +17,7 @@ import java.util.List;
  *
  * @author mason
  */
-public abstract class AbstractResponseAdapter<E extends ErrorResp>
-        implements CustomBootExceptionResponseAdapter<E> {
+public abstract class AbstractResponseAdapter<E extends ErrorResp> implements CustomBootExceptionResponseAdapter<E> {
 
     @Override
     public ResponseEntity<E> adapt(CustomBootException exception) {
@@ -33,14 +32,9 @@ public abstract class AbstractResponseAdapter<E extends ErrorResp>
                 normalizer.normalize(normalizedError);
             }
         }
-
         MultiValueMap<String, String> headers = buildHeaders(exception);
         return new ResponseEntity<>(normalizedError, headers, status);
     }
-
-    protected abstract List<Normalizer<E>> normalizers();
-
-    protected abstract NormalizedFactory<E> normalizedFactory();
 
     /**
      * Build headers with exception. Subclass can override this to implement custom logical.
@@ -50,4 +44,7 @@ public abstract class AbstractResponseAdapter<E extends ErrorResp>
      */
     protected abstract MultiValueMap<String, String> buildHeaders(CustomBootException exception);
 
+    protected abstract NormalizedFactory<E> normalizedFactory();
+
+    protected abstract List<Normalizer<E>> normalizers();
 }

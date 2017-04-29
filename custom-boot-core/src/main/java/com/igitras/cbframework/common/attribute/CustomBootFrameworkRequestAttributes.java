@@ -17,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CustomBootFrameworkRequestAttributes implements CustomBootRequestAttributes {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomBootFrameworkRequestAttributes.class);
-
     private final Map<String, Object> attributeHolder = new ConcurrentHashMap<>();
 
     @Override
@@ -29,12 +28,9 @@ public class CustomBootFrameworkRequestAttributes implements CustomBootRequestAt
     }
 
     @Override
-    public <T> void setAttribute(String name, T attribute) {
-        Assert.notNull(attribute, "not allowed to set an empty attribute");
-        if (attributeHolder.containsKey(name)) {
-            LOG.warn("there is already an attribute with name {} exists, will override it", name);
-        }
-        attributeHolder.put(name, attribute);
+    public String[] getAttributes() {
+        Set<String> keySet = attributeHolder.keySet();
+        return keySet.toArray(new String[keySet.size()]);
     }
 
     @Override
@@ -43,8 +39,11 @@ public class CustomBootFrameworkRequestAttributes implements CustomBootRequestAt
     }
 
     @Override
-    public String[] getAttributes() {
-        Set<String> keySet = attributeHolder.keySet();
-        return keySet.toArray(new String[keySet.size()]);
+    public <T> void setAttribute(String name, T attribute) {
+        Assert.notNull(attribute, "not allowed to set an empty attribute");
+        if (attributeHolder.containsKey(name)) {
+            LOG.warn("there is already an attribute with name {} exists, will override it", name);
+        }
+        attributeHolder.put(name, attribute);
     }
 }

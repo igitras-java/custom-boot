@@ -14,15 +14,18 @@ public class TraceNodeReader implements RequestAttributeReader<TraceNode> {
     private static final String TRACE_CONSUMER_ID_HEADER_NAME = "X-Trace-Consumer-Id";
     private static final String TRACE_CONSUMER_HOST_HEADER_NAME = "X-Trace-Consumer-Host";
     private static final String TRACE_CONSUMER_IP_HEADER_NAME = "X-Trace-Consumer-Ip";
-
     private static final String TRACE_PROVIDER_ID_HEADER_NAME = "X-Trace-Provider-Id";
     private static final String TRACE_PROVIDER_HOST_HEADER_NAME = "X-Trace-Provider-Host";
     private static final String TRACE_PROVIDER_IP_HEADER_NAME = "X-Trace-Provider-Ip";
-
     private String hnId;
     private String hnHost;
     private String hnIp;
 
+    /**
+     * Create a provider trace node reader or consumer trace node reader.
+     *
+     * @param consumer consumer flag
+     */
     public TraceNodeReader(boolean consumer) {
         if (consumer) {
             this.hnId = TRACE_CONSUMER_ID_HEADER_NAME;
@@ -35,19 +38,9 @@ public class TraceNodeReader implements RequestAttributeReader<TraceNode> {
         }
     }
 
-    public TraceNodeReader setHnId(String hnId) {
-        this.hnId = hnId;
-        return this;
-    }
-
-    public TraceNodeReader setHnHost(String hnHost) {
-        this.hnHost = hnHost;
-        return this;
-    }
-
-    public TraceNodeReader setHnIp(String hnIp) {
-        this.hnIp = hnIp;
-        return this;
+    @Override
+    public TraceNode read(HttpServletRequest request) {
+        return readNode(request);
     }
 
     @Override
@@ -55,9 +48,19 @@ public class TraceNodeReader implements RequestAttributeReader<TraceNode> {
         return TraceNode.class.isAssignableFrom(clazz);
     }
 
-    @Override
-    public TraceNode read(HttpServletRequest request) {
-        return readNode(request);
+    public TraceNodeReader setHnHost(String hnHost) {
+        this.hnHost = hnHost;
+        return this;
+    }
+
+    public TraceNodeReader setHnId(String hnId) {
+        this.hnId = hnId;
+        return this;
+    }
+
+    public TraceNodeReader setHnIp(String hnIp) {
+        this.hnIp = hnIp;
+        return this;
     }
 
     private TraceNode readNode(HttpServletRequest request) {

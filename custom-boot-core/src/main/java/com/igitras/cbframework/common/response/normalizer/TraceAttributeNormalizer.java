@@ -9,6 +9,7 @@ import com.igitras.cbframework.common.attribute.trace.TraceAttribute;
 import com.igitras.cbframework.common.attribute.trace.TraceInfo;
 import com.igitras.cbframework.common.attribute.trace.TraceNode;
 import com.igitras.cbframework.common.response.DefaultNormalizedResp;
+
 import org.springframework.util.Assert;
 
 /**
@@ -24,11 +25,6 @@ public class TraceAttributeNormalizer implements Normalizer<DefaultNormalizedRes
     }
 
     @Override
-    public boolean support(Object target) {
-        return target != null && target instanceof DefaultNormalizedResp;
-    }
-
-    @Override
     public void normalize(DefaultNormalizedResp origin) {
         Assert.notNull(origin, "Origin normalized response must not be null.");
         TraceAttribute trace = trace();
@@ -40,5 +36,10 @@ public class TraceAttributeNormalizer implements Normalizer<DefaultNormalizedRes
             // TODO: local instance id is not support yet.
         }
         origin.setTrace(trace);
+    }
+
+    @Override
+    public boolean support(Object target) {
+        return target != null && target instanceof DefaultNormalizedResp;
     }
 }

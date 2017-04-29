@@ -1,6 +1,5 @@
 package com.igitras.cbframework.exception.access;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import com.igitras.cbframework.exception.ErrorMessage;
@@ -18,6 +17,11 @@ public class AuthorizationFailedException extends AccessDeniedException {
         this("Authorization Failed");
     }
 
+    /**
+     * Create an {@link AuthorizationFailedException} with message.
+     *
+     * @param message message
+     */
     public AuthorizationFailedException(String message) {
         // @formatter:off
         this(message, builder().addArguments(message).build());

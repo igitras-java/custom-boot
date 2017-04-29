@@ -1,11 +1,13 @@
 package com.igitras.cbframework.exception.request;
 
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
+
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 import static java.lang.String.format;
 
 import org.springframework.http.HttpStatus;
+
 
 /**
  * Exception when the requesting resource not exist.

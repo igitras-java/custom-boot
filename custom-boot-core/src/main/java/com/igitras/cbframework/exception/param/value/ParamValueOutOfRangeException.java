@@ -1,12 +1,10 @@
 package com.igitras.cbframework.exception.param.value;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import static java.lang.String.format;
 
 import com.google.common.collect.Range;
-
 
 /**
  * Parameter Exception when param value is out of given range.
@@ -23,5 +21,4 @@ public final class ParamValueOutOfRangeException extends ParameterValueException
                 builder().addArguments(paramName, range).build());
         // @formatter:on
     }
-
 }

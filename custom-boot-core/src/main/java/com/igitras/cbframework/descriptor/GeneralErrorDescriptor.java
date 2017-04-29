@@ -14,15 +14,6 @@ public class GeneralErrorDescriptor implements ErrorDescriptor {
     private String link;
     private String description;
 
-    public String getIdentity() {
-        return identity;
-    }
-
-    public GeneralErrorDescriptor setIdentity(String identity) {
-        this.identity = identity;
-        return this;
-    }
-
     @Override
     public String getCode() {
         return code;
@@ -31,6 +22,11 @@ public class GeneralErrorDescriptor implements ErrorDescriptor {
     public GeneralErrorDescriptor setCode(String code) {
         this.code = code;
         return this;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 
     @Override
@@ -43,13 +39,17 @@ public class GeneralErrorDescriptor implements ErrorDescriptor {
         return this;
     }
 
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
     public GeneralErrorDescriptor setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public GeneralErrorDescriptor setIdentity(String identity) {
+        this.identity = identity;
         return this;
     }
 }

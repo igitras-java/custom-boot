@@ -1,7 +1,7 @@
 package com.igitras.cbframework.exception.param;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
+
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.util.StringUtils.arrayToCommaDelimitedString;
 

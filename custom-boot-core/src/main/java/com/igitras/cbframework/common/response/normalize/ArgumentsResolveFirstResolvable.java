@@ -35,27 +35,24 @@ class ArgumentsResolveFirstResolvable implements MessageSourceResolvable {
                 .toArray();
     }
 
+    @Override
+    public String getDefaultMessage() {
+        return delegate.getDefaultMessage();
+    }
+
     private String localizedArg(Object arg) {
         if (arg == null) {
             return "null";
         }
-
         if (arg instanceof String) {
             String strArg = (String) arg;
             return messageSource.getMessage(strArg, null, strArg, locale);
         }
-
         if (arg instanceof MessageSourceResolvable) {
             MessageSourceResolvable resolvable = (MessageSourceResolvable) arg;
             return messageSource.getMessage(new ArgumentsResolveFirstResolvable(resolvable, messageSource, locale),
                     locale);
         }
-
         return String.valueOf(arg);
-    }
-
-    @Override
-    public String getDefaultMessage() {
-        return delegate.getDefaultMessage();
     }
 }

@@ -1,6 +1,5 @@
 package com.igitras.cbframework.translator;
 
-
 import com.igitras.cbframework.CustomBootExceptionTranslator;
 import com.igitras.cbframework.exception.CustomBootException;
 import com.igitras.cbframework.exception.uncatalog.UncatalogException;
@@ -10,17 +9,11 @@ import com.igitras.cbframework.exception.uncatalog.UncatalogException;
  *
  * @author mason
  */
-public class DefaultExceptionTranslator
-        implements CustomBootExceptionTranslator<Exception, CustomBootException> {
+public class DefaultExceptionTranslator implements CustomBootExceptionTranslator<Exception, CustomBootException> {
 
     @Override
     public int getOrder() {
         return LOWEST_PRECEDENCE;
-    }
-
-    @Override
-    public CustomBootException translate(Exception exception) {
-        return new UncatalogException(exception);
     }
 
     /**
@@ -32,5 +25,10 @@ public class DefaultExceptionTranslator
     @Override
     public boolean support(Exception exception) {
         return true;
+    }
+
+    @Override
+    public CustomBootException translate(Exception exception) {
+        return new UncatalogException(exception);
     }
 }

@@ -1,6 +1,5 @@
 package com.igitras.cbframework.exception.param.value;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
 
 import com.igitras.cbframework.exception.ErrorMessage;
@@ -23,7 +22,8 @@ public class ParameterValueException extends ParameterException {
     }
 
     public ParameterValueException(ResolvableArgument argument) {
-        this(String.format("Param Error: %s", argument.getDefaultMessage()), builder().addArguments(argument).build());
+        this(String.format("Param Error: %s", argument.getDefaultMessage()), builder().addArguments(argument)
+                .build());
     }
 
     public ParameterValueException(String message, ErrorMessage error) {

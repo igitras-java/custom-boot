@@ -13,14 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface RequestAttributeReader<T extends RequestAttribute> {
 
     /**
-     * Determine and limit the supported attribute.
-     *
-     * @param clazz supported attribute type
-     * @return support or not
-     */
-    boolean support(Class clazz);
-
-    /**
      * Read the attribute from the request.
      *
      * @param request http request
@@ -28,24 +20,42 @@ public interface RequestAttributeReader<T extends RequestAttribute> {
      */
     T read(HttpServletRequest request);
 
-
+    /**
+     * Read a long header value from request with given name.
+     *
+     * @param headerName header name
+     * @param request    request
+     * @return header value
+     */
     default Long readLong(String headerName, HttpServletRequest request) {
         Assert.notNull(request, "Request must not be null while reading [Long] header.");
         Assert.hasText(headerName, "Header name must not be null while reading [Long] header.");
         String header = request.getHeader(headerName);
-
         if (!StringUtils.isEmpty(header)) {
             return Long.parseLong(header);
         }
-        
         return null;
     }
 
+    /**
+     * Read a string header value from request with given name.
+     *
+     * @param headerName header name
+     * @param request    request
+     * @return header value
+     */
     default String readString(String headerName, HttpServletRequest request) {
         Assert.notNull(request, "Request must not be null while reading [String] header.");
         Assert.hasText(headerName, "Header name must not be null while reading [String] header.");
-
         String header = request.getHeader(headerName);
         return StringUtils.isEmpty(header) ? null : header;
     }
+
+    /**
+     * Determine and limit the supported attribute.
+     *
+     * @param clazz supported attribute type
+     * @return support or not
+     */
+    boolean support(Class clazz);
 }

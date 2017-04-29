@@ -12,8 +12,8 @@ import java.net.UnknownHostException;
  * @author mason
  */
 public abstract class LocalInfoProvider {
-    private static final Logger LOG = LoggerFactory.getLogger(LocalInfoProvider.class);
 
+    private static final Logger LOG = LoggerFactory.getLogger(LocalInfoProvider.class);
     private static InetAddress LOCAL_INET_ADDR;
 
     static {
@@ -24,15 +24,15 @@ public abstract class LocalInfoProvider {
         }
     }
 
-    public static String getLocalIpAddress() {
-        return LOCAL_INET_ADDR.getHostAddress();
+    public static String getCanonicalHostname() {
+        return LOCAL_INET_ADDR.getCanonicalHostName();
     }
 
     public static String getLocalHostname() {
         return LOCAL_INET_ADDR.getHostName();
     }
 
-    public static String getCanonicalHostname() {
-        return LOCAL_INET_ADDR.getCanonicalHostName();
+    public static String getLocalIpAddress() {
+        return LOCAL_INET_ADDR.getHostAddress();
     }
 }

@@ -8,12 +8,10 @@ import com.igitras.cbframework.exception.ErrorMessage;
  * @author mason
  */
 public class Status implements StatusAttribute {
+
     private static final long serialVersionUID = 4027964297108974418L;
-
     private String code;
-
     private String[] messages;
-
     private ErrorMessage[] errorMessages;
 
     public String getCode() {
@@ -22,15 +20,6 @@ public class Status implements StatusAttribute {
 
     public Status setCode(String code) {
         this.code = code;
-        return this;
-    }
-
-    public String[] getMessages() {
-        return messages;
-    }
-
-    public Status setMessages(String[] messages) {
-        this.messages = messages;
         return this;
     }
 
@@ -45,4 +34,12 @@ public class Status implements StatusAttribute {
         return this;
     }
 
+    public String[] getMessages() {
+        return messages;
+    }
+
+    public Status setMessages(String[] messages) {
+        this.messages = messages;
+        return this;
+    }
 }

@@ -8,16 +8,21 @@ package com.igitras.cbframework.common.attribute.trace;
 public class TraceInfo implements TraceAttribute {
 
     private static final long serialVersionUID = 4875185515443532210L;
-
     private String id;
-
     private Long span;
-
     private Long timestamp;
-
     private TraceNode provider = new TraceNodeIml();
-
     private TraceNode consumer = new TraceNodeIml();
+
+    public TraceNode getConsumer() {
+        return consumer;
+    }
+
+    @Override
+    public TraceInfo setConsumer(TraceNode consumer) {
+        this.consumer = consumer;
+        return this;
+    }
 
     @Override
     public String getId() {
@@ -27,6 +32,15 @@ public class TraceInfo implements TraceAttribute {
     @Override
     public TraceInfo setId(String id) {
         this.id = id;
+        return this;
+    }
+
+    public TraceNode getProvider() {
+        return provider;
+    }
+
+    public TraceInfo setProvider(TraceNode provider) {
+        this.provider = provider;
         return this;
     }
 
@@ -52,26 +66,6 @@ public class TraceInfo implements TraceAttribute {
         return this;
     }
 
-    public TraceNode getProvider() {
-        return provider;
-    }
-
-    public TraceInfo setProvider(TraceNode provider) {
-        this.provider = provider;
-        return this;
-    }
-
-    public TraceNode getConsumer() {
-        return consumer;
-    }
-
-    @Override
-    public TraceInfo setConsumer(TraceNode consumer) {
-        this.consumer = consumer;
-        return this;
-    }
-
-
     /**
      * Provider of the request. Usually is the server.
      */
@@ -82,18 +76,18 @@ public class TraceInfo implements TraceAttribute {
         private String ip;
 
         @Override
+        public String getHost() {
+            return host;
+        }
+
+        @Override
         public String getId() {
             return id;
         }
 
-        public TraceNode setId(String id) {
-            this.id = id;
-            return this;
-        }
-
         @Override
-        public String getHost() {
-            return host;
+        public String getIp() {
+            return ip;
         }
 
         public TraceNode setHost(String host) {
@@ -101,9 +95,9 @@ public class TraceInfo implements TraceAttribute {
             return this;
         }
 
-        @Override
-        public String getIp() {
-            return ip;
+        public TraceNode setId(String id) {
+            this.id = id;
+            return this;
         }
 
         public TraceNode setIp(String ip) {

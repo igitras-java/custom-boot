@@ -1,6 +1,7 @@
 package com.igitras.cbframework;
 
 import com.igitras.cbframework.exception.CustomBootException;
+
 import org.springframework.core.Ordered;
 
 /**
@@ -13,18 +14,18 @@ import org.springframework.core.Ordered;
 public interface CustomBootExceptionTranslator<O extends Exception, T extends CustomBootException> extends Ordered {
 
     /**
-     * Translate the given exception to custom boot exception.
-     *
-     * @param exception exception.
-     * @return custom boot exception
-     */
-    T translate(O exception);
-
-    /**
      * Checking support or not.
      *
      * @param exception exception
      * @return support or not.
      */
     boolean support(Exception exception);
+
+    /**
+     * Translate the given exception to custom boot exception.
+     *
+     * @param exception exception.
+     * @return custom boot exception
+     */
+    T translate(O exception);
 }

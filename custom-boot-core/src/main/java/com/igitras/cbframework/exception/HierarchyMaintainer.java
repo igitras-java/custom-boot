@@ -14,5 +14,4 @@ public interface HierarchyMaintainer<T> {
      * @return Maintainer
      */
     HierarchyMaintainer addDetails(T... details);
-
 }

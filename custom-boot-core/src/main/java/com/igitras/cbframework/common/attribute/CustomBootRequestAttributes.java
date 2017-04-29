@@ -18,13 +18,11 @@ public interface CustomBootRequestAttributes {
     <T> T getAttribute(String name);
 
     /**
-     * Set an attribute to the context with given key.
+     * Get all the attribute keys.
      *
-     * @param name      context key
-     * @param attribute attribute
-     * @param <T>       attribute type
+     * @return attribute keys.
      */
-    <T> void setAttribute(String name, T attribute);
+    String[] getAttributes();
 
     /**
      * Checking if the attribute exists.
@@ -34,9 +32,11 @@ public interface CustomBootRequestAttributes {
     boolean hasAttribute(String name);
 
     /**
-     * Get all the attribute keys.
+     * Set an attribute to the context with given key.
      *
-     * @return attribute keys.
+     * @param name      context key
+     * @param attribute attribute
+     * @param <T>       attribute type
      */
-    String[] getAttributes();
+    <T> void setAttribute(String name, T attribute);
 }

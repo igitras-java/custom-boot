@@ -1,12 +1,11 @@
 package com.igitras.cbframework.exception.param;
 
-
 import static com.igitras.cbframework.exception.ErrorMessageBuilder.builder;
+
 import static org.springframework.util.StringUtils.arrayToCommaDelimitedString;
 
 import static java.lang.String.format;
 import static java.lang.String.join;
-
 
 /**
  * Parameter Exception when missing some param.
@@ -23,5 +22,4 @@ public final class MissingParameterException extends ParameterException {
                 builder().addArguments(arrayToCommaDelimitedString(paramNames)).build());
         // @formatter:on
     }
-
 }

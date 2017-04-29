@@ -7,6 +7,7 @@ import com.igitras.cbframework.common.attribute.status.StatusAttribute;
 import com.igitras.cbframework.common.response.DefaultNormalizedResp;
 import com.igitras.cbframework.common.response.normalize.LocalizableResolver;
 import com.igitras.cbframework.utils.AttributesUtils;
+
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.util.Assert;
 
@@ -26,11 +27,6 @@ public class StatusAttributeNormalizer extends LocalizableResolver implements No
     }
 
     @Override
-    public boolean support(Object target) {
-        return target != null && target instanceof DefaultNormalizedResp;
-    }
-
-    @Override
     public void normalize(DefaultNormalizedResp origin) {
         Assert.notNull(origin, "Origin normalized response must not be null.");
         StatusAttribute status = AttributesUtils.status();
@@ -39,5 +35,10 @@ public class StatusAttributeNormalizer extends LocalizableResolver implements No
                 .collect(Collectors.toList())
                 .toArray(new String[status.getErrorMessages().length]);
         status.setMessages(concatenateStringArrays(status.getMessages(), msgs));
+    }
+
+    @Override
+    public boolean support(Object target) {
+        return target != null && target instanceof DefaultNormalizedResp;
     }
 }
